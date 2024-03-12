@@ -4,12 +4,49 @@ import 'package:bmiapp/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+
+  void updateColor(Gender gender) {
+    gender == Gender.male
+        ? maleCardColor == inactiveCardColor
+            ? (
+                maleCardColor = activeCardColor,
+                femaleCardColor = inactiveCardColor
+              )
+            : maleCardColor = inactiveCardColor
+        : femaleCardColor == inactiveCardColor
+            ? (
+                femaleCardColor = activeCardColor,
+                maleCardColor = inactiveCardColor
+              )
+            : (femaleCardColor = inactiveCardColor);
+
+    // if (gender == Gender.male) {
+    //   if (maleCardColor == inactiveCardColor) {
+    //     maleCardColor = activeCardColor;
+    //     femaleCardColor = inactiveCardColor;
+    //   } else {
+    //     maleCardColor = inactiveCardColor;
+    //   }
+    // } else {
+    //   if (femaleCardColor == inactiveCardColor) {
+    //     femaleCardColor = activeCardColor;
+    //     maleCardColor = inactiveCardColor;
+    //   } else {
+    //     femaleCardColor = inactiveCardColor;
+    //   }
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,16 +62,38 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: <Widget>[
-          const Expanded(
+          Expanded(
             child: Row(
-              children: [
+              children: <Widget>[
                 Expanded(
-                  child:
-                      IconContent(label: "MALE", icon: FontAwesomeIcons.mars),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(
+                        () {
+                          updateColor(Gender.male);
+                        },
+                      );
+                    },
+                    child: ReusableCard(
+                      color: maleCardColor,
+                      cardChild: IconContent(
+                          label: "MALE", icon: FontAwesomeIcons.mars),
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: IconContent(
-                      label: "FEMALE", icon: FontAwesomeIcons.venus),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(Gender.female);
+                      });
+                    },
+                    child: ReusableCard(
+                      color: femaleCardColor,
+                      cardChild: IconContent(
+                          label: "FEMALE", icon: FontAwesomeIcons.venus),
+                    ),
+                  ),
                 ),
               ],
             ),
