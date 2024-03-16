@@ -1,5 +1,5 @@
 import "package:bmiapp/reusable_card.dart";
-import "package:bmiapp/variables.dart";
+import "package:bmiapp/constants.dart";
 import "package:flutter/material.dart";
 
 class IconContent extends StatelessWidget {
