@@ -7,6 +7,33 @@ const labelStyle = TextStyle(
 
 const kNumberStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.bold);
 
+const kLargeButtonText = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+);
+
+const kTitleTextStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.bold,
+);
+
+const kResultStyle = TextStyle(
+  color: Color(
+    0xFF24D876,
+  ),
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+
+const kBMITextStyle = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
+
+const kBodyBoxStyle = TextStyle(
+  fontSize: 22,
+);
+
 const double bottomContainerHeight = 80.0;
 const Color activeCardColor = Color(0xFF1D1E33);
 // const Color activeCardColor = Colors.white;
